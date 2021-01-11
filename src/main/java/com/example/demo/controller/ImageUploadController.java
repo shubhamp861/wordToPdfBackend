@@ -68,4 +68,10 @@ public class ImageUploadController {
 		System.out.println(IOUtils.toByteArray(fileInputStream));
 		return IOUtils.toByteArray(fileInputStream);
 	}
+	
+	@GetMapping("/")
+	@CrossOrigin
+	public List<String> hello(){
+		return Arrays.asList("Hello","Welcome");
+	}
 }
