@@ -63,7 +63,7 @@ public class ImageUploadController {
 	@CrossOrigin
 	public Object getpdf() throws Exception{
 		String  propertyFile = System.getProperty("user.dir")+"\\src\\main\\resources\\";
-		File file =  new File(propertyFile+"Sample.pdf");
+		File file =  new File("Sample.pdf");
 		FileInputStream fileInputStream = new FileInputStream(file);
 		return IOUtils.toByteArray(fileInputStream);
 	}
