@@ -83,6 +83,7 @@ public class ImageUploadController {
 			FileWriter b = new FileWriter(i);
 			b.append("yo");
 			b.flush();
+			
 		   }
 		catch (Exception r) {
 			logger.error(r.toString());}
