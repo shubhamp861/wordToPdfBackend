@@ -1,6 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.controller.ImageUploadController;
 import org.apache.commons.compress.utils.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
@@ -12,7 +15,8 @@ import java.util.Base64;
 
 @SpringBootApplication
 public class ImageUploadApplication {
-
+	Logger logger = LoggerFactory.getLogger(ImageUploadController.class);
 	public static void main(String[] args) {
 		SpringApplication.run(ImageUploadApplication.class, args); }
+
 }
