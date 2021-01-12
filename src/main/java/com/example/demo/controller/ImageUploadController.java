@@ -2,7 +2,12 @@ package com.example.demo.controller;
 import com.example.demo.FileService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.compress.utils.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,15 +21,15 @@ import java.util.List;
 
 @RestController
 public class ImageUploadController {
-
+	Logger logger = LoggerFactory.getLogger(ImageUploadController.class);
 	@Autowired
 	FileService fileService;
 
 	@PostMapping("/upload")
 	@CrossOrigin
 	public ResponseEntity<List<String>> uploadFile(@RequestParam("file") MultipartFile file) {
-
 		List<String> message;
+	    logger.info("called upload");
 		try {
 			fileService.convertWordToPdf(file);
 			message = Arrays.asList("Uploaded the file successfully: " + file.getName());
@@ -59,11 +64,11 @@ public class ImageUploadController {
 //		return new ResponseEntity<byte[]>(buf, respHeaders, HttpStatus.OK);
 //
 //	}
-	@GetMapping("/a")
+	@GetMapping("/downloadPdf")
 	@CrossOrigin
 	public Object getpdf() throws Exception{
-		String  propertyFile = System.getProperty("user.dir")+"\\src\\main\\resources\\";
-		File file =  new File(propertyFile+"Sample.pdf");
+		Resource resource = new ClassPathResource("fil.docx");
+		File file = resource.getFile();
 		FileInputStream fileInputStream = new FileInputStream(file);
 		return IOUtils.toByteArray(fileInputStream);
 	}
@@ -72,4 +77,26 @@ public class ImageUploadController {
 	public List<String> hello(){
 		return Arrays.asList("Hello","Welcome");
 	}
+
+//	@GetMapping("/b")
+//	@CrossOrigin
+//	public ResponseEntity<InputStreamResource> hel()
+//	{
+//
+//		Resource resource = new ClassPathResource("Sample.pdf");
+//		long r = 0;
+//		InputStream is=null;
+//
+//		try {
+//			is = resource.getInputStream();
+//			r = resource.contentLength();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return ResponseEntity.ok().contentLength(r)
+//				.contentType(MediaType.parseMediaType("application/pdf"))
+//				.body(new InputStreamResource(is));
+//
+//	}
 }
