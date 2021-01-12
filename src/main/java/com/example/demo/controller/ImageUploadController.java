@@ -67,7 +67,7 @@ public class ImageUploadController {
 	@GetMapping("/downloadPdf")
 	@CrossOrigin
 	public Object getpdf() throws Exception{
-		Resource resource = new ClassPathResource("Sample.pdf");
+		Resource resource = new ClassPathResource("/app/Sample.pdf");
 		File file = resource.getFile();
 		FileInputStream fileInputStream = new FileInputStream(file);
 		return IOUtils.toByteArray(fileInputStream);
@@ -75,19 +75,6 @@ public class ImageUploadController {
 	@GetMapping("/")
 	@CrossOrigin
 	public List<String> hello(){
-
-		try{
-			File i = new File("dext.txt");
-			i.createNewFile();
-			logger.error(i.getAbsolutePath());
-			FileWriter b = new FileWriter(i);
-			b.append("yo");
-			b.flush();
-			
-		   }
-		catch (Exception r) {
-			logger.error(r.toString());}
-
 		return Arrays.asList("Hello","Welcome");
 	}
 

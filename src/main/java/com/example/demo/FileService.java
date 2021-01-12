@@ -18,17 +18,17 @@ public class FileService {
       try {
             FileInputStream templateInputStream=new FileInputStream(multipartToFile(file));
             WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(templateInputStream);
-            String outputfilepath ="Sample.pdf";
+            String outputfilepath ="/app/Sample.pdf";
             FileOutputStream os = new FileOutputStream(outputfilepath);
             Docx4J.toPDF(wordMLPackage,os);
             os.flush();
             os.close();
             System.out.println("complete");
         } catch (Throwable e) {e.printStackTrace();}
-    return new File("Sample.pdf");
+    return new File("/app/Sample.pdf");
     }
     public  File multipartToFile(MultipartFile multipart) throws IllegalStateException, IOException {
-        File convFile = new File("fil.docx");
+        File convFile = new File("/app/fil.docx");
         multipart.transferTo(convFile);
         return convFile;
     }
