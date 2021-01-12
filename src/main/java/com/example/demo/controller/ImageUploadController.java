@@ -67,7 +67,7 @@ public class ImageUploadController {
 	@GetMapping("/downloadPdf")
 	@CrossOrigin
 	public Object getpdf() throws Exception{
-		Resource resource = new ClassPathResource("fil.docx");
+		Resource resource = new ClassPathResource("Sample.pdf");
 		File file = resource.getFile();
 		FileInputStream fileInputStream = new FileInputStream(file);
 		return IOUtils.toByteArray(fileInputStream);
