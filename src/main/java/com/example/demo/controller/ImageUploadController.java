@@ -31,8 +31,10 @@ public class ImageUploadController {
 		List<String> message;
 	    logger.info("called upload");
 		try {
-			fileService.convertWordToPdf(file);
-			message = Arrays.asList("Uploaded the file successfully: " + file.getName());
+            File file1 = fileService.convertWordToPdf(file);
+            logger.error(file1.getAbsolutePath());
+            logger.error(file1.getPath());
+            message = Arrays.asList("Uploaded the file successfully: " + file.getName());
 			return ResponseEntity.status(HttpStatus.OK).body(message);
 		} catch (Exception e) {
 			message = Arrays.asList("Could not upload the file: " + file.getName());
