@@ -34,8 +34,7 @@ public class ImageUploadController {
             FileInputStream fileInputStream = new FileInputStream(file1);
             return IOUtils.toByteArray(fileInputStream);
 		} catch (Exception e) {
-		    return e.toString();
-		}
+		    return e.toString(); }
 	}
 
 //	@GetMapping("/abc")
