@@ -27,18 +27,14 @@ public class ImageUploadController {
 
 	@PostMapping("/upload")
 	@CrossOrigin
-	public ResponseEntity<List<String>> uploadFile(@RequestParam("file") MultipartFile file) {
-		List<String> message;
+	public Object uploadFile(@RequestParam("file") MultipartFile file) {
 	    logger.info("called upload");
 		try {
             File file1 = fileService.convertWordToPdf(file);
-            logger.error(file1.getAbsolutePath());
-            logger.error(file1.getPath());
-            message = Arrays.asList("Uploaded the file successfully: " + file.getName());
-			return ResponseEntity.status(HttpStatus.OK).body(message);
+            FileInputStream fileInputStream = new FileInputStream(file1);
+            return IOUtils.toByteArray(fileInputStream);
 		} catch (Exception e) {
-			message = Arrays.asList("Could not upload the file: " + file.getName());
-			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+		    return e.toString();
 		}
 	}
 
