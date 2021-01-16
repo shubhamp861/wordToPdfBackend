@@ -27,14 +27,14 @@ public class ImageUploadController {
 
 	@PostMapping("/upload")
 	@CrossOrigin
-	public Object uploadFile(@RequestParam("file") MultipartFile file) {
+	public Object uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
 	    logger.info("called upload");
 		try {
             File file1 = fileService.convertWordToPdf(file);
             FileInputStream fileInputStream = new FileInputStream(file1);
-            return IOUtils.toByteArray(fileInputStream);
-		} catch (Exception e) {
-		    return e.toString(); }
+			return IOUtils.toByteArray(fileInputStream);
+		} catch (Exception e){
+		    return e.toString();}
 	}
 
 //	@GetMapping("/abc")
@@ -64,8 +64,9 @@ public class ImageUploadController {
 	@GetMapping("/downloadPdf")
 	@CrossOrigin
 	public Object getpdf() throws Exception{
-		Resource resource = new ClassPathResource("Sample.pdf");
-		File file = resource.getFile();
+//		Resource resource = new ClassPathResource("Sample.pdf");
+//		File file = resource.getFile();
+	    File file = new File("Sample.pdf");
 		FileInputStream fileInputStream = new FileInputStream(file);
 		return IOUtils.toByteArray(fileInputStream);
 	}

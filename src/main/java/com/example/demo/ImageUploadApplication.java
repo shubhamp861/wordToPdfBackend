@@ -12,11 +12,15 @@ import org.springframework.core.io.Resource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Base64;
+import java.util.Properties;
+import java.util.Set;
 
 @SpringBootApplication
 public class ImageUploadApplication {
 	Logger logger = LoggerFactory.getLogger(ImageUploadController.class);
 	public static void main(String[] args) {
 		SpringApplication.run(ImageUploadApplication.class, args); }
+
+
 
 }
