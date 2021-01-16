@@ -28,10 +28,11 @@ public class ImageUploadController {
 	@PostMapping("/upload")
 	@CrossOrigin
 	public Object uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
-	    logger.info("called upload");
+	    logger.info("called upload endpoint");
 		try {
             File file1 = fileService.convertWordToPdf(file);
             FileInputStream fileInputStream = new FileInputStream(file1);
+			logger.info("upload request completed");
 			return IOUtils.toByteArray(fileInputStream);
 		} catch (Exception e){
 		    return e.toString();}

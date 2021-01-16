@@ -17,7 +17,7 @@ import java.util.Set;
 
 @SpringBootApplication
 public class ImageUploadApplication {
-	Logger logger = LoggerFactory.getLogger(ImageUploadController.class);
+
 	public static void main(String[] args) {
 		SpringApplication.run(ImageUploadApplication.class, args); }
 
