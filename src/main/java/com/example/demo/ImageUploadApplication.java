@@ -19,7 +19,9 @@ import java.util.Set;
 public class ImageUploadApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ImageUploadApplication.class, args); }
+		SpringApplication.run(ImageUploadApplication.class, args);
+		
+	}
 
 
 
